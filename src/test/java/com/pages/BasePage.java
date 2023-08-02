@@ -1,5 +1,6 @@
 package com.pages;
 
+import com.utilities.BrowserUtils;
 import com.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,9 @@ public abstract class BasePage {
     public WebElement signIn;
 
     public void selectModule (String module){
-        Driver.get().findElement(By.xpath("//a[text()='"+module+"']")).click();
+        WebElement element = Driver.get().findElement
+                (By.xpath("//a[text()='" + module + "']"));
+        BrowserUtils.clickWithJS(element);
     }
 
     public void selectSecondaryModule (String module){
